@@ -1,5 +1,8 @@
 import Link from "next/link";
+import Avatar from "boring-avatars";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
+
+const AVATAR_COLORS = ["#62a0ff", "#4361ee", "#3a3a3a", "#2a2a2a", "#7fb8ff"];
 
 export function MarketingHero() {
   return (
@@ -44,7 +47,9 @@ export function MarketingHero() {
 
         <div className="mt-4 space-y-4">
           <div className="flex gap-3">
-            <div className="h-8 w-8 shrink-0 rounded-[15px] bg-secondary" />
+            <div className="shrink-0 overflow-hidden rounded-[15px]">
+              <Avatar size={32} name="Amara" variant="beam" colors={AVATAR_COLORS} />
+            </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-foreground">Amara</span>
@@ -57,7 +62,9 @@ export function MarketingHero() {
           </div>
 
           <div className="flex gap-3">
-            <div className="h-8 w-8 shrink-0 rounded-[15px] bg-primary/20" />
+            <div className="shrink-0 overflow-hidden rounded-[15px]">
+              <Avatar size={32} name="You" variant="beam" colors={AVATAR_COLORS} />
+            </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-medium text-foreground">You</span>
