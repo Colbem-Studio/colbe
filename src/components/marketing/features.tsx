@@ -43,7 +43,7 @@ const FEATURES = [
 
 export function MarketingFeatures() {
   return (
-    <section id="features" className="border-t border-border bg-card/40">
+    <section id="features">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           Our features
@@ -57,7 +57,7 @@ export function MarketingFeatures() {
           {FEATURES.map((feature) => {
             const Icon = feature.icon;
             return (
-              <div key={feature.title}>
+              <div key={feature.title} className="rounded-[15px] border border-border p-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-[15px] border border-border">
                   <Icon className="h-5 w-5 text-primary" />
                 </div>

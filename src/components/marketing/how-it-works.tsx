@@ -6,7 +6,7 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="border-t border-border">
+    <section id="how-it-works">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           How it works
