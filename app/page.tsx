@@ -1,9 +1,9 @@
-import { MarketingNavbar } from "./src/components/marketing/navbar";
-import { MarketingHero } from "./src/components/marketing/hero";
-import { HowItWorks } from "./src/components/marketing/how-it-works";
-import { MarketingFeatures } from "./src/components/marketing/features";
-import { MarketingCta } from "./src/components/marketing/cta";
-import { MarketingFooter } from "./src/components/marketing/footer";
+import { MarketingNavbar } from "@/components/marketing/navbar";
+import { MarketingHero } from "@/components/marketing/hero";
+import { HowItWorks } from "@/components/marketing/how-it-works";
+import { MarketingFeatures } from "@/components/marketing/features";
+import { MarketingCta } from "@/components/marketing/cta";
+import { MarketingFooter } from "@/components/marketing/footer";
 
 export default function Home() {
   return (
