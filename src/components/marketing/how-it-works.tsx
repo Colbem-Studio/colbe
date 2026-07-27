@@ -6,11 +6,14 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="border-t border-border bg-card/40">
+    <section id="how-it-works" className="border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+        <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           How it works
         </h2>
+        <p className="mt-3 max-w-xl text-sm text-muted-foreground md:text-base">
+          Three steps between you and your first conversation.
+        </p>
         <div className="mt-12 grid gap-10 md:grid-cols-3">
           {STEPS.map((step, i) => (
             <div key={step.title} className="rounded-[15px] border border-border p-6">
