@@ -60,6 +60,12 @@ export function MarketingFooter() {
           ))}
         </div>
       </div>
+
+      <div className="border-t border-border">
+        <div className="mx-auto max-w-6xl px-6 py-6 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} Colbem Studio. All rights reserved.
+        </div>
+      </div>
     </footer>
   );
 }
