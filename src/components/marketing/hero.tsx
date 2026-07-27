@@ -10,7 +10,8 @@ export function MarketingHero() {
         Chat that keeps up with you.
       </h1>
       <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-        Colbe brings your conversations, context, and team together in one place.
+        Colbe is a chat platform built for teams who want speed without losing
+        context — conversations, files, and history stay together, in sync.
       </p>
       <div className="mt-10 flex items-center justify-center gap-4">
         <Link
@@ -20,10 +21,10 @@ export function MarketingHero() {
           Start for free
         </Link>
         <Link
-          href="#how-it-works"
+          href="/docs"
           className="rounded-[15px] border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent"
         >
-          See how it works
+          Read the docs
         </Link>
       </div>
     </section>

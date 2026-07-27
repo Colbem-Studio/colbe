@@ -43,7 +43,7 @@ const FEATURES = [
 
 export function MarketingFeatures() {
   return (
-    <section id="features" className="bg-card/40">
+    <section id="features" className="bg-card">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           Our features
@@ -58,7 +58,7 @@ export function MarketingFeatures() {
             const Icon = feature.icon;
             return (
               <div key={feature.title}>
-                <div className="flex h-10 w-10 items-center justify-center rounded-[15px] border border-border">
+                <div className="flex h-10 w-10 items-center justify-center rounded-[15px] border border-primary/30 bg-primary/10">
                   <Icon className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="mt-4 text-base font-medium text-foreground">
