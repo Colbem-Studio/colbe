@@ -5,7 +5,7 @@ import { PaperPlaneRight, Plus } from "@phosphor-icons/react/dist/ssr";
 
 interface MessageComposerProps {
   channelName: string;
-  onSend: (content: string) => void;
+  onSend?: (content: string) => void;
 }
 
 export function MessageComposer({ channelName, onSend }: MessageComposerProps) {
@@ -15,7 +15,7 @@ export function MessageComposer({ channelName, onSend }: MessageComposerProps) {
     e.preventDefault();
     const trimmed = value.trim();
     if (!trimmed) return;
-    onSend(trimmed);
+    onSend?.(trimmed);
     setValue("");
   }
 

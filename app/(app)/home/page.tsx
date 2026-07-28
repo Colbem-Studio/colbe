@@ -24,7 +24,7 @@ export default async function HomePage() {
       <div className="flex flex-1 flex-col">
         <Titlebar channelName="" />
         <MessageList messages={[]} />
-        <MessageComposer channelName="" onSend={() => {}} />
+        <MessageComposer channelName="" />
       </div>
 
       <MemberList members={[]} />
