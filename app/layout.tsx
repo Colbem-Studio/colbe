@@ -1,4 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Colbe",
-  description: "Colbe is a chat platform that keeps conversations, context, and your team in sync.",
+  description: "Colbe - Better with friends",
 };
 
 export default function RootLayout({
@@ -24,7 +25,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        variables: {
+          colorPrimary: "oklch(0.62 0.19 260)",
+          colorBackground: "oklch(0.23 0.004 106)",
+          colorInputText: "oklch(0.97 0 0)",
+          colorText: "oklch(0.97 0 0)",
+          colorTextSecondary: "oklch(0.7 0 0)",
+          borderRadius: "15px",
+        },
+      }}
+    >
       <html
         lang="en"
         className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
