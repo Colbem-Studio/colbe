@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -17,11 +18,11 @@ export function LoginForm() {
     setError(null);
     setLoading(true);
 
-    const { error: signInError } = await authClient.signIn.email({ email, password });
+    const { error: signUpError } = await authClient.signUp.email({ name, email, password });
     setLoading(false);
 
-    if (signInError) {
-      setError(signInError.message ?? "Invalid email or password");
+    if (signUpError) {
+      setError(signUpError.message ?? "Something went wrong");
       return;
     }
     router.push("/home");
@@ -29,10 +30,22 @@ export function LoginForm() {
 
   return (
     <div className="w-full max-w-sm rounded-[15px] border border-border p-8">
-      <h1 className="text-xl font-semibold text-foreground">Log in to Colbe</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Welcome back — enter your details below.</p>
+      <h1 className="text-xl font-semibold text-foreground">Create your account</h1>
+      <p className="mt-1 text-sm text-muted-foreground">Welcome! Please fill in the details to get started.</p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <div>
+          <label htmlFor="name" className="text-sm text-foreground">Name</label>
+          <input
+            id="name"
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="mt-1 w-full rounded-[15px] border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
+          />
+        </div>
+
         <div>
           <label htmlFor="email" className="text-sm text-foreground">Email address</label>
           <input
@@ -51,6 +64,7 @@ export function LoginForm() {
             id="password"
             type="password"
             required
+            minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="mt-1 w-full rounded-[15px] border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
@@ -64,13 +78,13 @@ export function LoginForm() {
           disabled={loading}
           className="w-full rounded-[15px] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50"
         >
-          {loading ? "Signing in..." : "Continue"}
+          {loading ? "Creating account..." : "Continue"}
         </button>
       </form>
 
       <p className="mt-6 text-center text-sm text-muted-foreground">
-        Don&apos;t have an account?{" "}
-        <Link href="/register" className="text-primary hover:underline">Sign up</Link>
+        Already have an account?{" "}
+        <Link href="/login" className="text-primary hover:underline">Sign in</Link>
       </p>
     </div>
   );
