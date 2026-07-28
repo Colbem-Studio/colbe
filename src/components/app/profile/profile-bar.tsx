@@ -16,7 +16,7 @@ export function ProfileBar({ userName, userHandle, status = "online" }: ProfileB
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="relative flex items-center justify-between gap-2 border-t border-border bg-card px-2 py-2">
+    <div className="relative flex shrink-0 items-center justify-between gap-2 border-t border-border bg-card px-2 py-2">
       <button
         onClick={() => setMenuOpen((v) => !v)}
         className="flex min-w-0 items-center gap-2 rounded-[15px] px-1 py-1 hover:bg-accent"
@@ -42,11 +42,9 @@ export function ProfileBar({ userName, userHandle, status = "online" }: ProfileB
         <button aria-label="Mute microphone" className="rounded-[15px] p-1.5 text-destructive hover:bg-accent">
           <MicrophoneSlash weight="fill" className="h-4 w-4" />
         </button>
-        <CaretDown className="h-3 w-3 text-muted-foreground" />
         <button aria-label="Deafen" className="rounded-[15px] p-1.5 text-muted-foreground hover:bg-accent hover:text-foreground">
           <Headphones className="h-4 w-4" />
         </button>
-        <CaretDown className="h-3 w-3 text-muted-foreground" />
         <button aria-label="Settings" className="rounded-[15px] p-1.5 text-muted-foreground hover:bg-accent hover:text-foreground">
           <GearSix className="h-4 w-4" />
         </button>

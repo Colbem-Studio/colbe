@@ -13,7 +13,7 @@ interface ServerRailProps {
 
 export function ServerRail({ spaces }: ServerRailProps) {
   return (
-    <div className="flex h-full w-18 flex-col items-center gap-3 border-r border-border bg-card py-4">
+    <div className="flex h-full w-[72px] shrink-0 flex-col items-center gap-3 border-r border-border bg-card py-4">
       {spaces.map((space) => (
         <Link
           key={space.id}
