@@ -5,13 +5,17 @@ interface LegalLayoutProps {
   children: React.ReactNode;
 }
 
+const sidebarTheme = {
+  root: {
+    base: "h-full",
+    inner: "h-full overflow-y-auto overflow-x-hidden rounded-none bg-card px-3 py-4",
+  },
+};
+
 export function LegalLayout({ children }: LegalLayoutProps) {
   return (
     <div className="flex min-h-screen w-full">
-      <Sidebar
-        aria-label="Legal navigation"
-        className="h-screen w-60 shrink-0 [&>div]:rounded-none [&>div]:bg-card"
-      >
+      <Sidebar aria-label="Legal navigation" theme={sidebarTheme} className="w-60 shrink-0">
         <p className="mb-4 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Legal
         </p>
