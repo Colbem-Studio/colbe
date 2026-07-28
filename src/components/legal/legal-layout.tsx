@@ -1,4 +1,4 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Sidebar } from "flowbite-react";
 import { LegalNav } from "@/components/legal/legal-nav";
 
 interface LegalLayoutProps {
@@ -7,17 +7,20 @@ interface LegalLayoutProps {
 
 export function LegalLayout({ children }: LegalLayoutProps) {
   return (
-    <div className="mx-auto flex min-h-screen max-w-6xl">
-      <aside className="w-60 shrink-0 border-r border-border px-4 py-8">
+    <div className="flex min-h-screen w-full">
+      <Sidebar
+        aria-label="Legal navigation"
+        className="h-screen w-60 shrink-0 [&>div]:rounded-none [&>div]:bg-card"
+      >
         <p className="mb-4 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Legal
         </p>
         <LegalNav />
-      </aside>
+      </Sidebar>
 
-      <ScrollArea className="flex-1">
-        <div className="mx-auto max-w-2xl px-8 py-8">{children}</div>
-      </ScrollArea>
+      <div className="flex-1 overflow-y-auto">
+        <div className="mx-auto max-w-2xl px-8 py-10">{children}</div>
+      </div>
     </div>
   );
 }

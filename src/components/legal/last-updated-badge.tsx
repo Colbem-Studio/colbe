@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "flowbite-react";
 
 interface LastUpdatedBadgeProps {
   date: string;
@@ -6,7 +6,7 @@ interface LastUpdatedBadgeProps {
 
 export function LastUpdatedBadge({ date }: LastUpdatedBadgeProps) {
   return (
-    <Badge variant="outline" className="rounded-[15px] text-xs font-normal text-muted-foreground">
+    <Badge color="gray" className="rounded-[15px] text-xs font-normal">
       Last updated: {date}
     </Badge>
   );
