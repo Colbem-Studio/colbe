@@ -15,7 +15,11 @@ const sidebarTheme = {
 export function LegalLayout({ children }: LegalLayoutProps) {
   return (
     <div className="flex min-h-screen w-full">
-      <Sidebar aria-label="Legal navigation" theme={sidebarTheme} className="w-60 shrink-0">
+      <Sidebar
+        aria-label="Legal navigation"
+        theme={sidebarTheme}
+        className="sticky top-0 h-screen w-60 shrink-0"
+      >
         <p className="mb-4 px-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Legal
         </p>
