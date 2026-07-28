@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Avatar from "boring-avatars";
 import { Plus, Compass } from "@phosphor-icons/react/dist/ssr";
-import { Logomark } from "@/config/ServerThumbnail/logomark";
+import { Logomark } from "@/config/ServerThumbnail/branding/logomark";
 
 interface Space {
   id: string;
