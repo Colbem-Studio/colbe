@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MagnifyingGlass, UsersThree, Storefront, Plus } from "@phosphor-icons/react/dist/ssr";
+import { MagnifyingGlass, UsersThree, Coins, Storefront, UsersFour, Plus } from "@phosphor-icons/react/dist/ssr";
 
 export interface Conversation {
   id: string;
@@ -30,11 +30,25 @@ export function FriendsSidebar({ conversations }: FriendsSidebarProps) {
           <span>Friends</span>
         </Link>
         <Link
+          href="/lunes"
+          className="flex items-center gap-3 rounded-[15px] px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+        >
+          <Coins className="h-5 w-5 shrink-0" />
+          <span>Lunes</span>
+        </Link>
+        <Link
           href="/shop"
           className="flex items-center gap-3 rounded-[15px] px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
         >
           <Storefront className="h-5 w-5 shrink-0" />
           <span>Shop</span>
+        </Link>
+        <Link
+          href="/family-center"
+          className="flex items-center gap-3 rounded-[15px] px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+        >
+          <UsersFour className="h-5 w-5 shrink-0" />
+          <span>Family Center</span>
         </Link>
       </nav>
 
