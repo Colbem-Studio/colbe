@@ -4,9 +4,17 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import { BirthdayStep } from "./birthday-step";
+import { GenderStep } from "./gender-step";
+
+type Step = "birthday" | "gender" | "credentials";
 
 export function RegisterForm() {
   const router = useRouter();
+  const [step, setStep] = useState<Step>("birthday");
+  const [birthday, setBirthday] = useState<Date | null>(null);
+  const [gender, setGender] = useState<string | null>(null);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +26,13 @@ export function RegisterForm() {
     setError(null);
     setLoading(true);
 
-    const { error: signUpError } = await authClient.signUp.email({ name, email, password });
+    const { error: signUpError } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      birthday,
+      gender,
+    });
     setLoading(false);
 
     if (signUpError) {
@@ -28,6 +42,29 @@ export function RegisterForm() {
     router.push("/home");
   }
 
+  if (step === "birthday") {
+    return (
+      <BirthdayStep
+        onNext={(b) => {
+          setBirthday(b);
+          setStep("gender");
+        }}
+      />
+    );
+  }
+
+  if (step === "gender") {
+    return (
+      <GenderStep
+        onNext={(g) => {
+          setGender(g);
+          setStep("credentials");
+        }}
+        onBack={() => setStep("birthday")}
+      />
+    );
+  }
+
   return (
     <div className="w-full max-w-sm rounded-[15px] border border-border p-8">
       <h1 className="text-xl font-semibold text-foreground">Create your account</h1>
@@ -35,7 +72,7 @@ export function RegisterForm() {
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
-          <label htmlFor="name" className="text-sm text-foreground">Name</label>
+          <label htmlFor="name" className="text-sm text-foreground">Username</label>
           <input
             id="name"
             type="text"
