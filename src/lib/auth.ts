@@ -11,6 +11,23 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  user: {
+    additionalFields: {
+      username: {
+        type: "string",
+        required: false,
+        unique: true,
+      },
+      birthday: {
+        type: "date",
+        required: false,
+      },
+      gender: {
+        type: "string",
+        required: false,
+      },
+    },
+  },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,
   trustedOrigins: [
