@@ -32,18 +32,6 @@ export function MarketingNavbar() {
             );
           })}
         </div>
-
-        <div className="flex items-center gap-3">
-          <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground">
-            Log in
-          </Link>
-          <Link
-            href="/register"
-            className="rounded-[15px] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
-          >
-            Get started
-          </Link>
-        </div>
       </nav>
     </header>
   );

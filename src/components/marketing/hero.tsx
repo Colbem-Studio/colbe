@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Avatar from "boring-avatars";
+import Link from "next/link";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 
 const AVATAR_COLORS = ["#62a0ff", "#4361ee", "#3a3a3a", "#2a2a2a", "#7fb8ff"];
@@ -8,10 +8,6 @@ export function MarketingHero() {
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-24 md:grid-cols-2 md:pt-32">
       <div className="text-center md:text-left">
-        <span className="inline-block rounded-[15px] border border-border px-3 py-1 text-xs uppercase tracking-widest text-muted-foreground">
-          Now in early access
-        </span>
-
         <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-6xl">
           Chat that keeps up with you.
         </h1>
@@ -22,12 +18,6 @@ export function MarketingHero() {
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row md:justify-start">
-          <Link
-            href="/register"
-            className="rounded-[15px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90"
-          >
-            Start for free
-          </Link>
           <Link
             href="/docs"
             className="rounded-[15px] border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent"
