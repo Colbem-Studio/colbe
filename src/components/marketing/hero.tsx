@@ -34,7 +34,7 @@ export function MarketingHero() {
         <div className="mt-6 border-t border-dashed border-border pt-6">
           <div className="grid grid-cols-2 gap-4">
             <Link
-              href="/features/messaging"
+              href="/home"
               className="group rounded-[15px] p-2 text-left hover:bg-accent"
             >
               <ChatCircleDots className="h-5 w-5 text-primary" weight="bold" />
@@ -48,7 +48,7 @@ export function MarketingHero() {
             </Link>
 
             <Link
-              href="/features/communities"
+              href="/discover"
               className="group rounded-[15px] p-2 text-left hover:bg-accent"
             >
               <UsersThree className="h-5 w-5 text-primary" weight="bold" />
