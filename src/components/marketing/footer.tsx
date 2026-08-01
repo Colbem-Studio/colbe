@@ -34,7 +34,7 @@ export function MarketingFooter() {
         <div>
           <span className="text-lg font-semibold tracking-tight text-foreground">Colbe</span>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-            Chat that keeps up with you.
+            Colbem Studio™
           </p>
         </div>
 
