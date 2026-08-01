@@ -1,38 +1,46 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Info, BookOpen } from "@phosphor-icons/react/dist/ssr";
 
-const NAV_LINKS = [
-  { label: "About", href: "/about", icon: Info },
-  { label: "Documentation", href: "/docs", icon: BookOpen },
+const LINKS = [
+  { href: "/about", label: "About", icon: Info },
+  { href: "/docs", label: "Documentation", icon: BookOpen },
 ];
 
 export function MarketingNavbar() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/favicon.svg" alt="Colbe logo" width={24} height={24} />
-          <span className="text-lg font-semibold tracking-tight text-foreground">Colbe</span>
+    <div className="sticky top-0 z-50 w-full px-4 py-3">
+      <nav className="mx-auto flex max-w-3xl items-center justify-between rounded-[15px] bg-card px-4 py-2 shadow-lg">
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/favicon.svg" alt="Colbe" width={24} height={24} />
+          <span className="text-base font-semibold text-foreground">Colbe</span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => {
-            const Icon = link.icon;
+        <div className="hidden items-center gap-6 sm:flex">
+          {LINKS.map(({ href, label, icon: Icon }) => {
+            const isActive = pathname === href;
             return (
               <Link
-                key={link.href}
-                href={link.href}
-                className="group relative flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                key={href}
+                href={href}
+                className={`flex items-center gap-1.5 border-b-2 pb-0.5 text-sm transition-colors ${
+                  isActive
+                    ? "border-foreground text-foreground"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
+                }`}
               >
                 <Icon className="h-4 w-4" />
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-foreground transition-all duration-300 group-hover:w-full" />
+                {label}
               </Link>
             );
           })}
         </div>
       </nav>
-    </header>
+    </div>
   );
 }
