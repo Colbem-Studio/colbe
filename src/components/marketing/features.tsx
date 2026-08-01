@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -41,10 +44,16 @@ const FEATURES = [
   },
 ];
 
+const CARD_WIDTH = 320;
+const GAP = 24;
+const STEP = CARD_WIDTH + GAP;
+
 export function MarketingFeatures() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section id="features">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+    <section id="features" className="w-full">
+      <div className="mx-auto max-w-6xl px-6 pt-20">
         <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           Our features
         </h2>
@@ -52,12 +61,30 @@ export function MarketingFeatures() {
           Colbe's core features are built around trust — from encryption to
           moderation, every conversation stays private, safe, and in sync.
         </p>
+      </div>
 
-        <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-3">
-          {FEATURES.map((feature) => {
+      <div className="relative mt-16 h-[280px] w-full overflow-hidden pb-20">
+          {FEATURES.map((feature, i) => {
             const Icon = feature.icon;
+            const offset = i - activeIndex;
+            const distance = Math.abs(offset);
+            const scale = distance === 0 ? 1 : 0.86;
+            const opacity = distance === 0 ? 1 : distance === 1 ? 0.55 : 0.2;
+            const isActive = distance === 0;
+
             return (
-              <div key={feature.title} className="rounded-[15px] border border-border p-6">
+              <button
+                key={feature.title}
+                onClick={() => setActiveIndex(i)}
+                className="absolute left-1/2 top-0 w-[320px] shrink-0 rounded-[15px] border border-border bg-card p-6 text-left transition-all duration-500 ease-out"
+                style={{
+                  transform: `translateX(calc(-50% + ${offset * STEP}px)) scale(${scale})`,
+                  opacity,
+                  zIndex: 10 - distance,
+                  pointerEvents: isActive ? "none" : "auto",
+                  cursor: isActive ? "default" : "pointer",
+                }}
+              >
                 <div className="flex h-10 w-10 items-center justify-center rounded-[15px] border border-border">
                   <Icon className="h-5 w-5 text-primary" />
                 </div>
@@ -67,16 +94,32 @@ export function MarketingFeatures() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   {feature.description}
                 </p>
-                <Link
-                  href="#"
-                  className="group mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary"
-                >
-                  Learn more
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
+                {isActive && (
+                  <Link
+                    href="#"
+                    className="group mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary"
+                  >
+                    Learn more
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                )}
+              </button>
             );
           })}
+        </div>
+
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mt-6 flex justify-center gap-2">
+          {FEATURES.map((feature, i) => (
+            <button
+              key={feature.title}
+              onClick={() => setActiveIndex(i)}
+              aria-label={`Show ${feature.title}`}
+              className={`h-1.5 rounded-full transition-all ${
+                i === activeIndex ? "w-6 bg-primary" : "w-1.5 bg-border"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
