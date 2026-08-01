@@ -42,6 +42,9 @@ const sidebarTheme = {
   item: {
     base: "flex items-center gap-2 rounded-[15px] p-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground",
   },
+  itemGroup: {
+    base: "mt-4 space-y-2 border-t border-dashed border-border pt-4 first:mt-0 first:border-t-0 first:pt-0",
+  },
 };
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
