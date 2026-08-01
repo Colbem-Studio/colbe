@@ -28,6 +28,21 @@ export const auth = betterAuth({
       },
     },
   },
+  rateLimit: {
+    enabled: true,
+    window: 60,
+    max: 100,
+    customRules: {
+      "/sign-up/email": {
+        window: 60,
+        max: 5,
+      },
+      "/sign-in/email": {
+        window: 60,
+        max: 10,
+      },
+    },
+  },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,
   trustedOrigins: [
