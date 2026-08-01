@@ -16,6 +16,7 @@ export function RegisterForm() {
   const [gender, setGender] = useState<string | null>(null);
 
   const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -24,10 +25,17 @@ export function RegisterForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+
+    if (!birthday || !gender) {
+      setError("Missing birthday or gender — please restart sign up");
+      return;
+    }
+
     setLoading(true);
 
     const { error: signUpError } = await authClient.signUp.email({
       name,
+      username,
       email,
       password,
       birthday,
@@ -72,13 +80,25 @@ export function RegisterForm() {
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
-          <label htmlFor="name" className="text-sm text-foreground">Username</label>
+          <label htmlFor="name" className="text-sm text-foreground">Name</label>
           <input
             id="name"
             type="text"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="mt-1 w-full rounded-[15px] border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="username" className="text-sm text-foreground">Username</label>
+          <input
+            id="username"
+            type="text"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="mt-1 w-full rounded-[15px] border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
