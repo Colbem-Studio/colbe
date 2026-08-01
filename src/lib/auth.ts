@@ -15,16 +15,16 @@ export const auth = betterAuth({
     additionalFields: {
       username: {
         type: "string",
-        required: true,
+        required: false,
         unique: true,
       },
       birthday: {
         type: "date",
-        required: true,
+        required: false,
       },
       gender: {
         type: "string",
-        required: true,
+        required: false,
       },
     },
   },
