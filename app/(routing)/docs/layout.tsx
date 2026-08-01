@@ -46,8 +46,8 @@ const sidebarTheme = {
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex max-w-6xl gap-8 px-6 py-8">
-      <aside className="hidden w-64 shrink-0 md:block">
+    <div className="flex w-full">
+      <aside className="hidden w-64 shrink-0 px-4 py-8 md:block">
         <div className="sticky top-8 h-[calc(100vh-4rem)]">
           <Sidebar theme={sidebarTheme} aria-label="Docs navigation">
             <Link href="/" className="mb-4 flex items-center gap-2 px-2">
@@ -73,7 +73,9 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1 py-2">{children}</main>
+      <main className="min-w-0 flex-1 px-6 py-8">
+        <div className="mx-auto max-w-3xl">{children}</div>
+      </main>
     </div>
   );
 }
